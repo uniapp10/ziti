@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns="http://www.5kym.com" versionCode="0.6">
+	<application setting="true">
+		<name><![CDATA[你的故事有毒]]></name>
+		<identifie><![CDATA[tuzi_youdu]]></identifie>
+		<version><![CDATA[1.9]]></version>
+		<type><![CDATA[business]]></type>
+		<ability><![CDATA[你的故事有毒]]></ability>
+		<description><![CDATA[你的故事有毒]]></description>
+		<author><![CDATA[悟空微擎应用市场]]></author>
+		<url><![CDATA[http://www.5kym.com/]]></url>
+	</application>
+	<platform>
+		<subscribes>
+		</subscribes>
+		<handles>
+		</handles>
+		<rule embed="false" />
+		<card embed="false" />
+	</platform>
+	<bindings>
+		<cover>
+			<entry title="生成器入口" do="index" state="" direct="false" />
+		</cover>
+		<menu>
+			<entry title="推广二维码" do="qrcode" state="" direct="false" />
+		</menu>
+	</bindings>
+	<permissions>
+	</permissions>
+	<install><![CDATA[
+CREATE TABLE IF NOT EXISTS `ims_tuzi_youdu_feng_wechat` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `uniacid` int(10) unsigned NOT NULL,
+  `appid` varchar(100) DEFAULT NULL,
+  `appsecret` varchar(200) DEFAULT NULL,
+  `access_token` text,
+  `lasttime` char(20) DEFAULT NULL,
+  `share_focus` varchar(200) DEFAULT NULL,
+  `title` varchar(255) NOT NULL COMMENT '网页标题',
+  `share_title` varchar(200) DEFAULT NULL,
+  `share_image` varchar(500) DEFAULT NULL,
+  `share_desc` varchar(300) DEFAULT NULL,
+  `share_url` varchar(300) DEFAULT NULL,
+  `win_mess` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+DELETE FROM `ims_tuzi_youdu_feng_wechat`;
+INSERT INTO `ims_tuzi_youdu_feng_wechat` (`id`, `uniacid`, `appid`, `appsecret`, `access_token`, `lasttime`, `share_focus`, `title`, `share_title`, `share_image`, `share_desc`, `share_url`, `win_mess`) VALUES
+	(1, 2, '', '', NULL, NULL, '0', '你的故事有毒...99%的人看到结果都哭了，只有1%...', '你的故事有毒...99%的人看到结果都哭了，只有1%...', 'images/2/2016/09/THn5tZlnr0nq82N228k88RKnKNeqT2.jpg', '你的故事有毒...99%的人看到结果都哭了，只有1%...', 'xxxxxxx', '');
+
+
+CREATE TABLE IF NOT EXISTS `ims_tuzi_youdu_setting` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `uniacid` int(10) NOT NULL COMMENT '公众号ID',
+  `image` varchar(255) NOT NULL COMMENT '推广二维码',
+  `title` varchar(255) NOT NULL COMMENT '网页标题',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+]]></install>
+	<uninstall><![CDATA[]]></uninstall>
+	<upgrade><![CDATA[
+	
+DROP TABLE IF EXISTS `ims_tuzi_youdu_setting`;
+
+CREATE TABLE IF NOT EXISTS `ims_tuzi_youdu_setting` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `uniacid` int(10) NOT NULL COMMENT '公众号ID',
+  `image` varchar(255) NOT NULL COMMENT '推广二维码',
+  `title` varchar(255) NOT NULL COMMENT '网页标题',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+	
+		]]></upgrade>
+</manifest>

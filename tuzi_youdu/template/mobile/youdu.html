@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="format-detection" content="telephone=no" />
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <link rel="stylesheet" href="../addons/tuzi_youdu/template/css/withme.fun.online.0.1.10.ptext.css">
+  <title>{$share_data['title']}你的故事有毒...99%的人看到结果都哭了，只有1%...</title>
+  <script>
+  {if $share_data['share_url']}
+  {php $shareurl = 'http://'.$share_data['share_url'].'/app/'.$this->createMobileUrl('index');}
+  {else}
+  {php $shareurl = $_W['siteroot'].'app/'.$this->createMobileUrl('index');}
+  {/if}
+    window._cl_g_data_ = {"pageId":4,"wechatConfig":{"nonceStr":"{$getshare['nonceStr']}","timestamp":"{$getshare['timestamp']}","signature":"{$getshare['signature']}","appId":"{$getshare['appId']}"},"wechatShareConfig":{"title":"{$share_data['share_title']}","desc":"{$share_data['share_desc']}","link":"{$shareurl}","imgUrl":"{$share_data['share_desc']}"}};
+    window.vaurl = '<?php echo $_W['siteroot'].'app'.ltrim(murl('entry',array('do'=>'index','m'=>'tuzi_youdu'),false),'.'); ?>';
+  </script>
+<style>
+.follow{font-size:20px;line-height:30px;color:#fff;text-align:center;padding-top:30%;z-index:2000;position:fixed;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,.9);display:none;}
+.follow span{font-size:40px;position:absolute;top:10px;left:10px;}
+.follow img{width:180px;margin-top:10px;}
+</style>  
+</head>
+<body>
+
+<div class="p-ptext">
+  <h3 id="J_title" class="save-tip"></h3>
+  <div class="content">
+    <div class="head">
+      <span class="poison"></span>
+      <span class="close"></span>
+    </div>
+    <div id="J_body" class="body">
+      <div id="J_img"></div>
+      <div id="J_inputBody">
+        <h2 class="title"></h2>
+        <h4 class="tip"></h4>
+        <input id="J_username" type="text" class="t-input">
+        <div class="gender">
+          <span data-id="1" class="gender-cover is-chosen">
+            <span class="circle-out boy-circle">
+              <span class="circle-in"></span>
+            </span>
+            <span class="gender-text boy"></span>
+          </span>
+          <span data-id="2" class="gender-cover">
+            <span class="circle-out girl-circle">
+              <span class="circle-in"></span>
+            </span>
+            <span class="gender-text girl"></span>
+          </span>
+        </div>
+        <button id="J_btn" class="btn btn-create" onclick="return confirmSubmit()">
+          <span class="text-create"></span>
+          <span class="hand"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div id="J_change" class="btn btn-change">
+    再来一次
+  </div>
+</div>
+<div id="follow" class="follow">
+    
+    <p>长按下方二维码图片</p>
+    <p>点选识别图中二维码</p>
+    <img style="background-color:#fff;" src="{php echo tomedia($setting['image']); }">
+</div>
+<script>
+            function confirmSubmit() {
+                {if !$_W['fans']['follow'] && $share_data['share_focus']==1}
+                show();
+                return ($("#J_body").val(""), void $("#J_body").attr("placeholder", "请输入1到4个字"));
+                {else}
+                return true;
+                {/if}
+                
+            }
+            function show() {
+                document.getElementById("follow").style.display = "block";
+            }
+            function hide() {
+                document.getElementById("follow").style.display = "none";
+            }            
+        </script>
+<script src="../addons/tuzi_youdu/template/js/withme.fun.lib.zepto.min.js"></script>
+
+<script src="../addons/tuzi_youdu/template/js/withme.fun.online.0.1.10.ptext.js"></script>
+</body>
+</html>
